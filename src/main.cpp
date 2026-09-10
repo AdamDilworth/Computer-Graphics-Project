@@ -7,6 +7,7 @@
 #define GLFW_INCLUDE_NONE
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "inputManager.hpp"
 #include <print>
 #include <iostream>
 
@@ -31,10 +32,12 @@ int main() {
     }
     glfwMakeContextCurrent(window);
     gladLoadGL();
-    glfwSetKeyCallback(window, key_callback);
+    inputManager::setupCallbacks(window);
 
     while (!glfwWindowShouldClose(window)) {
         // Keep running
+        glfwPollEvents();
+        glfwSwapBuffers(window);
     }
 
     // Close glfw before ending program

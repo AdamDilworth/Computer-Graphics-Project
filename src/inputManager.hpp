@@ -20,9 +20,12 @@ class inputManager {
         // Stores key states with true for pressed, false for unpressed
         std::unordered_map<int, bool> keyStates;
 
+        // Logs keyhandler events in console when true
+        bool logKeyHandler = true;
+
         // GLFW static callback
         static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
         // Handles key inputs
-        void handleKey(int key, int scancode, int action, int mods);
+        void handleKey(GLFWwindow* window, int key, int scancode, int action, int mods);
 };
