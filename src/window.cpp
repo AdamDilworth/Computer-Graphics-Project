@@ -27,9 +27,8 @@ void window::inititialize() {
     
     // Create Window
     GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-    GLFWwindow* win = glfwCreateWindow(mode->width, mode->height, "Computer Graphics Project", monitor, NULL);
+    GLFWwindow* win = glfwCreateWindow(width, height, "Computer Graphics Project", nullptr, nullptr);
+    mainWindow = win;
     if(!win){
         // Window Creation Failed
         std::cerr << "ERROR: Failed to create window.\n";
@@ -37,9 +36,10 @@ void window::inititialize() {
         std::exit(EXIT_FAILURE); // Exit program with error
     }
     glfwMakeContextCurrent(win);
-    gladLoadGL();
+    gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+    glfwGetFramebufferSize(mainWindow, &fbWidth, &fbHeight);
+    glViewport(0, 0, fbWidth, fbHeight);
 
-    mainWindow = win;
     setUpCallbacks();
 }
 

@@ -38,6 +38,9 @@ class window {
         // Width and Height
         int width, height;
 
+        // Frame buffer width and height
+        int fbWidth, fbHeight;
+
         // Stores title
         std::string_view title;
 
