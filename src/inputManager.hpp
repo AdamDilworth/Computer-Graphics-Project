@@ -5,16 +5,23 @@
 */
 
 #pragma once
-#include <GLFW/glfw3.h>
 #include <unordered_map>
+
+class window;
 
 class inputManager {
     public:
-        // Initializes callbacks for GLFW window
-        static void setupCallbacks(GLFWwindow* window);
+        // Constructor
+        inputManager();
 
         // Check if key is pressed
         bool isKeyPressed(int key);
+
+        // Handles key inputs
+        void handleKey(int key, int scancode, int action, int mods);
+
+        // Set window
+        void setWindow(window* window);
 
     private:
         // Stores key states with true for pressed, false for unpressed
@@ -23,9 +30,6 @@ class inputManager {
         // Logs keyhandler events in console when true
         bool logKeyHandler = true;
 
-        // GLFW static callback
-        static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
-
-        // Handles key inputs
-        void handleKey(GLFWwindow* window, int key, int scancode, int action, int mods);
+        // Holds window pointer
+        window* mainWindow = nullptr;
 };

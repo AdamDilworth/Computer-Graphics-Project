@@ -5,38 +5,24 @@
 */
 
 #define GLFW_INCLUDE_NONE
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include "inputManager.hpp"
+#include "window.hpp"
 #include <iostream>
 
 int main() {
-    // Initiate glfw
-    if (!glfwInit()) {
-        // Initialization failed
-        std::cerr << "ERROR: Failed to initiate GLFW.\n";
-        glfwTerminate(); // Close glfw
-        std::exit(EXIT_FAILURE); // Exit program with error
-    }
-    
-    // Create Window
-    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-    GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "Computer Graphics Project", monitor, NULL);
-    if(!window){
-        // Window Creation Failed
-        std::cerr << "ERROR: Failed to create window.\n";
-        glfwTerminate(); // Close glfw
-        std::exit(EXIT_FAILURE); // Exit program with error
-    }
-    glfwMakeContextCurrent(window);
-    gladLoadGL();
-    inputManager::setupCallbacks(window);
+    // Initialize project
+    window window(512, 512, "Computer Graphics Project");
+    inputManager input;
 
-    while (!glfwWindowShouldClose(window)) {
-        // Keep running
-        glfwPollEvents();
-        glfwSwapBuffers(window);
+    // Link window and input manager
+    window.setInputManager(&input);
+    input.setWindow(&window);
+
+    // Start project loop
+    while (!window.shouldClose()) { // Runs till window is told to close
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        window.swapBuffers();
+        glfwPollEvents(); // Process input events
     }
 
     // Close glfw before ending program
