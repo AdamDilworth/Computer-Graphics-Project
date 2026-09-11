@@ -33,6 +33,7 @@ void inputManager::keyCallback(GLFWwindow* window, int key, int scancode, int ac
     }
 }
 
+// Allows handling of key presses
 void inputManager::handleKey(GLFWwindow* window, int key, int scancode, int action, int mods) {
     // ESC key handler
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {

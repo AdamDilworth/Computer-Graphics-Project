@@ -16,6 +16,7 @@ add_executable(${PROJECT_NAME}
     src/main.cpp 
     src/glad.c
     src/inputManager.cpp
+    src/window.cpp
 )
 
 # Run command

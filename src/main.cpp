@@ -8,7 +8,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "inputManager.hpp"
-#include <print>
 #include <iostream>
 
 int main() {
