@@ -39,6 +39,7 @@ void window::inititialize() {
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     glfwGetFramebufferSize(mainWindow, &fbWidth, &fbHeight);
     glViewport(0, 0, fbWidth, fbHeight);
+    glEnable(GL_DEPTH_TEST);
 
     setUpCallbacks();
 }
