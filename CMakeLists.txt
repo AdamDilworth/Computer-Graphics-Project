@@ -17,6 +17,7 @@ add_executable(${PROJECT_NAME}
     src/glad.c
     src/inputManager.cpp
     src/window.cpp
+    src/tetromino.cpp
 )
 
 # Run command
