@@ -5,6 +5,15 @@ project(OpenGLProject CXX C)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Fetch glm
+include(FetchContent)
+FetchContent_Declare(
+    glm
+    GIT_REPOSITORY https://github.com/g-truc/glm.git
+    GIT_TAG 1.0.3
+)
+FetchContent_MakeAvailable(glm)
+
 # Find the GLFW package installed on your system
 find_package(glfw3 REQUIRED)
 
@@ -32,4 +41,5 @@ add_custom_target(run
 # Link GLFW and your operating system's standard OpenGL library
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     glfw
+    glm::glm
 )
