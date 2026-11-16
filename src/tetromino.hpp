@@ -6,6 +6,7 @@
 
 #pragma once
 #include <string>
+#include <vector>
 #include <glm/glm.hpp>
 
 class tetromino {
@@ -40,6 +41,9 @@ class tetromino {
     private:
         // Holds shape type
         std::string shape;
+
+        // Holds block data
+        std::vector<glm::ivec3> blocks;
 
         /*
             Initialize shape
