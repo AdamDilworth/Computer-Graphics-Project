@@ -95,3 +95,13 @@ void window::onKey(int key, int scancode, int action, int mods) {
 void window::setInputManager(inputManager* input) {
     mainInput = input;
 }
+
+// Returns width
+int window::getWidth() const {
+    return width;
+}
+
+// Returns height
+int window::getHeight() const {
+    return height;
+}
